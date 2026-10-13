@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f5767772b1cc9f84488e8c94a97c7121
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Editor/RealPhysicsPlacerSettings.cs
+  uploadId: 988048

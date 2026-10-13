@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 28c2ba9f92eab434f9cb5409664c2fb5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Materials/HDRP/RPP_Floor.mat
+  uploadId: 988048

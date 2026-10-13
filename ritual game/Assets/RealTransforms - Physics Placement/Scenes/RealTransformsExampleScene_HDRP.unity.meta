@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 927f95319c4044ef81dcf43c38135745
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Scenes/RealTransformsExampleScene_HDRP.unity
+  uploadId: 988048

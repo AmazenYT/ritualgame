@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5767772b1cc9f84488e8c94a97c7121, type: 3}
+  m_Name: RealPhysicsPlacerSettings
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::RealPhysicsPlacer.EditorTools.RealPhysicsPlacerSettings
+  settingsVersion: 77
+  move:
+    preserveSelectionOffsets: 1
+    controlRotationInPlacement: 1
+    readjustHandleOnMouseUp: 1
+    teleportWhenTooFar: 0
+    teleportDistance: 7
+    followSpeed: 80
+    simulationSpeed: 2
+    physicsStep: 0.01
+    maxSubsteps: 2
+    solverIterations: 8
+    solverVelocityIterations: 4
+    rotationConstraint: 0
+    spring: 240
+    damping: 24
+    angularDamping: 32
+    targetSmoothTime: 0.15
+    targetMaxDistance: 3
+    physicsAssistDistance: 0.1
+  rotate:
+    simulationSpeed: 2
+    physicsStep: 0.008
+    maxSubsteps: 2
+    solverIterations: 10
+    solverVelocityIterations: 4
+    rotationConstraint: 0
+    angularSpring: 90
+    angularDamping: 16
+    maxAngularSpeed: 14
+    linearDamping: 2.5
+    maxStepDegrees: 5
+    contactTolerance: 0.04
+  drop:
+    gravity: {x: 0, y: -9.81, z: 0}
+    simulationSpeed: 1
+    physicsStep: 0.01
+    maxSubsteps: 2
+    bodySolverIterations: 4
+    bodySolverVelocityIterations: 2
+    rotationConstraint: 0
+    solverIterations: 2
+    maxSpeed: 13.5
+    settleSteps: 0
+  arrange:
+    handleStrength: 2
+    padding: 0.5
+    primaryAction: 5
+    toolAction: 6
+    collideSelectedObjects: 1
+    collisionAware: 1
+  useGlobalPhysicsSettings: 1
+  globalSimulationSpeed: 2
+  globalPhysicsStep: 0.01
+  globalMaxSubsteps: 2
+  globalSolverIterations: 8
+  globalSolverVelocityIterations: 4
+  globalRotationConstraint: 0
+  assistKeyBehavior: 0
+  physicsAssistKey: 326
+  moveToolKey: 119
+  rotateToolKey: 101
+  arrangeToolKey: 114
+  actionKey: 32
+  arrangeRandomSpinKey: 114
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  includeTriggers: 0
+  ignoredTags: 
+  useRendererBoundsWhenNoCollider: 1
+  generateSceneProxyColliders: 1
+  useSceneProxyCollidersForAllObjects: 0
+  useLocalSceneProxyCache: 1
+  sceneProxyCacheRadius: 8
+  sceneProxyMeshRadius: 3
+  sceneProxyCacheRefreshDistance: 1.5
+  useConvexStaticMeshProxies: 0
+  useSurfaceShells: 0
+  surfaceShellBudget: 2048
+  surfaceShellSkin: 0.08
+  fallbackHullPieces: 1
+  bakerColliderShape: 2
+  bakerMaxHulls: 6
+  bakerMaxHullVertices: 128
+  bakerBakeTimeBudgetSeconds: 1800
+  bakerLodMask: 0
+  bakerSmartHullsUseFullBudget: 1
+  bakerRealHullsQuality: 0
+  bakerRealHullsVoxelResolution: 96
+  bakerRealHullsSurfaceSamples: 10000
+  bakerRealHullsMaxSplitCandidates: 64
+  bakerRealHullsShapeAccuracy: 0.03
+  bakerRealHullsMergePass: 1
+  bakerRealHullsCacheResults: 1
+  bakerOutputFolder: 
+  bakerSmartHullSplitSearch: 2
+  bakerSmartHullOpenEdgeBias: 0.2
+  bakerSmartHullMinSplitGain: 0
+  bakerMergeSmallHulls: 0
+  bakerSmallHullMergeTriangleLimit: 255
+  bakerSmallHullMergeExpansion: 1.25
+  bakerColliderPadding: 0
+  bakerCookMatch: 0
+  bakerCookMatchTolerance: 0.035
+  bakerPreviewResult: 1
+  bakerReplaceExisting: 1
+  bakerDisableExistingColliders: 0
+  bakerIncludeInactiveChildren: 0
+  bakerSkipPrimitiveMeshes: 1
+  bakerAddMeshFilters: 0
+  bakerDrawGizmos: 0
+  bakerDrawWhenUnselected: 0
+  bakerDrawSolidGizmos: 0
+  bakerLogTimings: 0
+  bakerGizmoColor: {r: 1, g: 0.55, b: 0.08, a: 0.85}
+  objectBakerIncludeInactiveChildren: 0
+  objectBakerExportFbx: 1
+  objectBakerOutputFolder: 
+  objectBakerPivot: 0
+  objectBakerRotation: 0
+  allowAxisSliding: 0
+  skinWidth: 0.15
+  maxMoveStep: 0.25
+  useCenterAsPhysicsTruth: 1
+  useIsolatedPhysicsScene: 0
+  isolatedPhysicsRadius: 8
+  temporaryBodyMass: 1
+  temporaryBodyCollisionDetection: 2
+  temporaryBodyInterpolation: 0
+  temporaryBodyMaxAngularVelocity: 50
+  preserveHigherExistingBodySolverIterations: 1
+  freezeSceneRigidbodiesDuringAssist: 1
+  preserveMovablePrefabParts: 1
+  displayCollisionIndicators: 0
+  collisionIndicatorDistance: 5
+  xAxisColor: {r: 0.95, g: 0.22, b: 0.18, a: 1}
+  yAxisColor: {r: 0.24, g: 0.78, b: 0.32, a: 1}
+  zAxisColor: {r: 0.24, g: 0.45, b: 1, a: 1}
+  blockedColor: {r: 0.18, g: 0.47, b: 1, a: 1}

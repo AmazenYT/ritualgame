@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aea4abcbd4aa2164e819343c783e8f98
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Materials/HDRP/RPP_Movable 1.mat
+  uploadId: 988048

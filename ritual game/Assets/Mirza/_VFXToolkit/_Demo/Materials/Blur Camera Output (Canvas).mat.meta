@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f843032e4d622624f9f4eb006f17201f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 365248
+  packageName: EZ Glass - Fast, Beautiful Glass (URP)
+  packageVersion: 2.2.0
+  assetPath: Assets/Mirza/_VFXToolkit/_Demo/Materials/Blur Camera Output (Canvas).mat
+  uploadId: 916610

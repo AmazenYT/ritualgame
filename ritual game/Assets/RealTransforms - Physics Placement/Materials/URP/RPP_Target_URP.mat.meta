@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 57ff73f677a84546a25f434e98901b8c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Materials/URP/RPP_Target_URP.mat
+  uploadId: 988048

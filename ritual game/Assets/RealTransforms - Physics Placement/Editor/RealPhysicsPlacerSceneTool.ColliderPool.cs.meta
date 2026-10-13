@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 8cc169aa0c6247a7a90c13fa0e71f6f4
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Editor/RealPhysicsPlacerSceneTool.ColliderPool.cs
+  uploadId: 988048

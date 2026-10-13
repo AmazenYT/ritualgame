@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ef861831cbec4bd3894150413f60b802
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Materials/BuiltIn/RPP_Obstacles_BuiltIn.mat
+  uploadId: 988048

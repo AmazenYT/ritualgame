@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 7a4b4e738ecf4f1abca0634a9a7dcdd5
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Editor/RealPhysicsPlacerSceneTool.IsolatedPhysics.cs
+  uploadId: 988048

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5a9c1ec0d8ba1f54f8cbd531a0c8cc87
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 365248
+  packageName: EZ Glass - Fast, Beautiful Glass (URP)
+  packageVersion: 2.2.0
+  assetPath: Assets/Mirza/EZ Glass - Fast, Beautiful Glass for URP/Shaders/Translucent Opaque.shader
+  uploadId: 916610

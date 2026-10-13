@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 7726a59b60b254c4a85bda7a6d331bac
+AssetOrigin:
+  serializedVersion: 1
+  productId: 365248
+  packageName: EZ Glass - Fast, Beautiful Glass (URP)
+  packageVersion: 2.2.0
+  assetPath: Assets/Mirza/_VFXToolkit/_Demo/Scripts/MVFXTK_LiveRenderTextureSendToMaterial.cs
+  uploadId: 916610

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a99a5f7ef5bc16840a2ca1de690eece4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 365248
+  packageName: EZ Glass - Fast, Beautiful Glass (URP)
+  packageVersion: 2.2.0
+  assetPath: Assets/Mirza/_VFXToolkit/_Demo/Materials/Post-Processing/Box Blur (Fullscreen).mat
+  uploadId: 916610

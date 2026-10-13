@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 466935323486473d9232be12f3bfd9d9
+AssetOrigin:
+  serializedVersion: 1
+  productId: 378514
+  packageName: RealTransforms - Physics Placement
+  packageVersion: 1.0.3
+  assetPath: Assets/RealTransforms - Physics Placement/Editor/RealPhysicsPlacerColliderGenerator.cs
+  uploadId: 988048

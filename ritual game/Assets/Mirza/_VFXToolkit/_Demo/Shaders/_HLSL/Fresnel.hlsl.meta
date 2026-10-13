@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 335cdca011deea248944b8f8792baf63
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 365248
+  packageName: EZ Glass - Fast, Beautiful Glass (URP)
+  packageVersion: 2.2.0
+  assetPath: Assets/Mirza/_VFXToolkit/_Demo/Shaders/_HLSL/Fresnel.hlsl
+  uploadId: 916610
