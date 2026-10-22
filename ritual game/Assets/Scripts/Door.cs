@@ -30,18 +30,27 @@ public class DoorInteraction : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+void Update()
+{
+    if (gameOver)
+        return;
 
-    void Update()
+    if (taskRandomizer != null &&
+        taskRandomizer.SequenceFailed)
     {
-        if (gameOver || popupOpen)
-            return;
-
-        // Left-click while looking at the door.
-        if (Input.GetMouseButtonDown(0))
-        {
-            CheckDoorClick();
-        }
+        EndGame();
+        return;
     }
+
+    if (popupOpen)
+        return;
+
+    // Left-click while looking at the door.
+    if (Input.GetMouseButtonDown(0))
+    {
+        CheckDoorClick();
+    }
+}
 
     void CheckDoorClick()
     {
@@ -120,34 +129,52 @@ public class DoorInteraction : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void EndGame()
-    {
-        gameOver = true;
+   void EndGame()
+{
+    gameOver = true;
+
+    // Capture the day the player lost before resetting progress.
     int dayLost = taskRandomizer != null
         ? taskRandomizer.currentDay
         : 1;
 
-    // Display the lost day on the Game Over UI.
+    // Display the day the player lost.
     if (gameOverDayText != null)
     {
-        gameOverDayText.text = "You Failed To Complete Your Morning Ritual On Day " + dayLost;
+        gameOverDayText.text =
+            "You Failed To Complete Your Morning Ritual On Day "
+            + dayLost;
     }
 
+    // Reset the saved day and ritual sequence.
+    if (taskRandomizer != null)
+    {
+        taskRandomizer.ResetRitual();
+    }
+    else
+    {
         PlayerPrefs.SetInt("CurrentDay", 1);
+        PlayerPrefs.DeleteKey("MorningRitualSequence");
         PlayerPrefs.Save();
-
-        Time.timeScale = 0f;
-
-        Debug.Log("GAME OVER! You did not complete all today's tasks.");
-
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
-        if (dayText != null)
-            dayText.SetActive(false);
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
+
+    // Freeze gameplay.
+    Time.timeScale = 0f;
+
+    Debug.Log("GAME OVER! Lost on Day " + dayLost);
+
+    // Show the Game Over UI.
+    if (gameOverPanel != null)
+        gameOverPanel.SetActive(true);
+
+    // Hide the day counter.
+    if (dayText != null)
+        dayText.SetActive(false);
+
+    // Unlock the cursor for UI interaction.
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+}
 
     public void RestartGame()
 {
