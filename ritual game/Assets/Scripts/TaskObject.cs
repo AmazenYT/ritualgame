@@ -6,7 +6,8 @@ public class TaskObject : MonoBehaviour
     public enum TaskType
     {
         Box,
-        Fridge
+        Fridge,
+        Bowl
     }
 
     public TaskType taskType;

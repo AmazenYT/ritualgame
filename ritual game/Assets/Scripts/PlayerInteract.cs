@@ -11,6 +11,11 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         taskRandomizer = FindAnyObjectByType<TaskRandomiser>();
+
+        if (taskRandomizer == null)
+        {
+            Debug.LogError("TaskRandomiser not found in the scene!");
+        }
     }
 
     void Update()
@@ -36,16 +41,10 @@ public class PlayerInteract : MonoBehaviour
             if (taskObject == null)
                 return;
 
-            if (taskRandomizer.IsCorrect(taskObject))
-            {
-                Debug.Log("Correct task! You interacted with: "
-                    + taskObject.taskType);
-            }
-            else
-            {
-                Debug.Log("WRONG TASK! You interacted with: "
-                    + taskObject.taskType);
-            }
+            if (taskRandomizer == null)
+                return;
+
+            taskRandomizer.CompleteTask(taskObject);
         }
     }
 }
