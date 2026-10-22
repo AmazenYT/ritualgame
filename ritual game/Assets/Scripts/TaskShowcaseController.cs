@@ -48,44 +48,63 @@ public class TaskShowcaseController : MonoBehaviour
         yield return null;
 
         if (taskRandomiser == null)
-            taskRandomiser = FindAnyObjectByType<TaskRandomiser>();
+        {
+            taskRandomiser =
+                FindAnyObjectByType<TaskRandomiser>();
+        }
 
         if (taskRandomiser == null)
         {
             Debug.LogError(
-                "TaskShowcaseController: TaskRandomiser not found.");
+                "SHOWCASE: TaskRandomiser not found.");
             yield break;
         }
 
-        if (showcaseCamera == null || gameplayCamera == null)
+        if (showcaseCamera == null ||
+            gameplayCamera == null)
         {
             Debug.LogError(
-                "TaskShowcaseController: Assign both cameras.");
+                "SHOWCASE: Assign both cameras in the Inspector.");
             yield break;
         }
 
         if (highlightEffectPrefab == null)
         {
             Debug.LogError(
-                "TaskShowcaseController: Assign the highlight effect prefab.");
+                "SHOWCASE: Assign the highlight effect prefab.");
             yield break;
         }
 
+        // Save and disable player controls during the showcase.
         SaveAndDisableScripts(
-            movementScripts, ref movementWasEnabled);
+            movementScripts,
+            ref movementWasEnabled);
 
         SaveAndDisableScripts(
-            interactionScripts, ref interactionWasEnabled);
+            interactionScripts,
+            ref interactionWasEnabled);
 
+        // Switch to the showcase camera.
         showcaseCamera.enabled = true;
         gameplayCamera.enabled = false;
 
         List<TaskObject.TaskType> tasks =
             taskRandomiser.GetDailyTasks();
 
-        Debug.Log(
-            "Starting memory showcase. Highlights: " + tasks.Count);
+        if (tasks == null || tasks.Count == 0)
+        {
+            Debug.LogWarning(
+                "SHOWCASE: No daily tasks were returned.");
 
+            FinishShowcase();
+            yield break;
+        }
+
+        Debug.Log(
+            "SHOWCASE: Starting memory showcase. Highlights: "
+            + tasks.Count);
+
+        // Display each required task in sequence.
         foreach (TaskObject.TaskType task in tasks)
         {
             TaskShowcaseTarget target = FindTarget(task);
@@ -93,13 +112,18 @@ public class TaskShowcaseController : MonoBehaviour
             if (target == null)
             {
                 Debug.LogWarning(
-                    "No showcase target assigned for task: " + task);
+                    "SHOWCASE: No target assigned for task: "
+                    + task);
             }
             else
             {
-                PlayHighlightAt(target.transform.position + highlightOffset);
+                Vector3 position =
+                    target.transform.position + highlightOffset;
 
-                Debug.Log("Showcase highlight: " + task);
+                PlayHighlightAt(position);
+
+                Debug.Log(
+                    "SHOWCASE: Highlighting task: " + task);
             }
 
             yield return new WaitForSecondsRealtime(
@@ -114,7 +138,8 @@ public class TaskShowcaseController : MonoBehaviour
             }
         }
 
-        yield return new WaitForSecondsRealtime(endingDelay);
+        yield return new WaitForSecondsRealtime(
+            endingDelay);
 
         FinishShowcase();
     }
@@ -127,25 +152,29 @@ public class TaskShowcaseController : MonoBehaviour
 
         foreach (TaskShowcaseTarget target in taskTargets)
         {
-            if (target != null && target.taskType == task)
+            if (target != null &&
+                target.taskType == task)
+            {
                 return target;
+            }
         }
 
         return null;
     }
 
-    
-private void PlayHighlightAt(Vector3 position)
-{
-    if (highlightEffectPrefab == null)
+    private void PlayHighlightAt(Vector3 position)
     {
-        Debug.LogError("Highlight effect prefab is missing.");
-        return;
-    }
+        // Ensure any previous effect is removed.
+        StopHighlight();
 
-    // Create the reusable effect the first time it is needed.
-    if (highlightEffectInstance == null)
-    {
+        if (highlightEffectPrefab == null)
+        {
+            Debug.LogError(
+                "SHOWCASE: Highlight effect prefab is missing.");
+            return;
+        }
+
+        // Instantiate a fresh effect for every highlight.
         highlightEffectInstance = Instantiate(
             highlightEffectPrefab,
             position,
@@ -155,85 +184,76 @@ private void PlayHighlightAt(Vector3 position)
         highlightParticleSystems =
             highlightEffectInstance
                 .GetComponentsInChildren<ParticleSystem>(true);
-    }
 
-    // Stop and clear every particle system before moving it.
-    foreach (ParticleSystem ps in highlightParticleSystems)
-    {
-        if (ps != null)
+        Debug.Log(
+            $"SHOWCASE: Instantiated effect at {position}. " +
+            $"Particle systems found: " +
+            $"{highlightParticleSystems.Length}");
+
+        if (highlightParticleSystems.Length == 0)
         {
+            Debug.LogError(
+                "SHOWCASE: No Particle Systems found on " +
+                "the prefab or its children.");
+            return;
+        }
+
+        // Make sure the effect is active before playback.
+        highlightEffectInstance.SetActive(true);
+
+        foreach (ParticleSystem ps in highlightParticleSystems)
+        {
+            if (ps == null)
+                continue;
+
             ps.Stop(
                 true,
                 ParticleSystemStopBehavior.StopEmittingAndClear
             );
+
             ps.Clear(true);
-        }
-    }
-
-    // Move and activate the reusable effect.
-    highlightEffectInstance.transform.SetPositionAndRotation(
-        position,
-        Quaternion.identity
-    );
-
-    highlightEffectInstance.SetActive(true);
-
-    // Restart all particle systems, including child systems.
-    foreach (ParticleSystem ps in highlightParticleSystems)
-    {
-        if (ps != null)
             ps.Play(true);
-    }
 
-    Debug.Log(
-        "Playing highlight at position: " + position +
-        ". Particle systems found: " +
-        (highlightParticleSystems != null
-            ? highlightParticleSystems.Length
-            : 0)
-    );
-
-    if (highlightParticleSystems == null ||
-        highlightParticleSystems.Length == 0)
-    {
-        Debug.LogError(
-            "The assigned prefab contains no Particle Systems."
-        );
-    }
-}
-
-private void StopHighlight()
-{
-    if (highlightEffectInstance == null)
-        return;
-
-    foreach (ParticleSystem ps in highlightParticleSystems)
-    {
-        if (ps != null)
-        {
-            ps.Stop(
-                true,
-                ParticleSystemStopBehavior.StopEmittingAndClear
-            );
+            Debug.Log(
+                $"SHOWCASE: Playing '{ps.name}', " +
+                $"isPlaying = {ps.isPlaying}");
         }
     }
 
-    highlightEffectInstance.SetActive(false);
-}
+    private void StopHighlight()
+    {
+        if (highlightEffectInstance == null)
+            return;
 
+        // Destroy the complete effect, including child objects.
+        Destroy(highlightEffectInstance);
+
+        highlightEffectInstance = null;
+        highlightParticleSystems = null;
+    }
 
     private void FinishShowcase()
     {
         StopHighlight();
 
-        showcaseCamera.enabled = false;
-        gameplayCamera.enabled = true;
+        // Restore the normal gameplay camera.
+        if (showcaseCamera != null)
+            showcaseCamera.enabled = false;
 
-        RestoreScripts(movementScripts, movementWasEnabled);
-        RestoreScripts(interactionScripts, interactionWasEnabled);
+        if (gameplayCamera != null)
+            gameplayCamera.enabled = true;
+
+        // Restore each script to its previous enabled state.
+        RestoreScripts(
+            movementScripts,
+            movementWasEnabled);
+
+        RestoreScripts(
+            interactionScripts,
+            interactionWasEnabled);
 
         Debug.Log(
-            "Memory showcase complete. Player control restored.");
+            "SHOWCASE: Complete. Player control restored.");
     }
 
     private void SaveAndDisableScripts(
@@ -265,7 +285,9 @@ private void StopHighlight()
         for (int i = 0; i < scripts.Length; i++)
         {
             if (scripts[i] != null)
+            {
                 scripts[i].enabled = previousStates[i];
+            }
         }
     }
 }
