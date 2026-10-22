@@ -7,7 +7,10 @@ public class TaskObject : MonoBehaviour
     {
         Box,
         Fridge,
-        Bowl
+        Bowl,
+        Sink,
+        Bag,
+        Garden
     }
 
     public TaskType taskType;

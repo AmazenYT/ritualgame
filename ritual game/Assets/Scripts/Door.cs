@@ -176,18 +176,31 @@ void Update()
     Cursor.visible = true;
 }
 
-    public void RestartGame()
+   
+public void RestartGame()
 {
-    // Reset the saved day.
-    PlayerPrefs.SetInt("CurrentDay", 1);
-    PlayerPrefs.Save();
+    // Reset the entire ritual, including the saved task sequence.
+    if (taskRandomizer == null)
+        taskRandomizer = FindAnyObjectByType<TaskRandomiser>();
 
-    // Unfreeze the game.
+    if (taskRandomizer != null)
+    {
+        taskRandomizer.ResetRitual();
+    }
+    else
+    {
+        PlayerPrefs.SetInt("CurrentDay", 1);
+        PlayerPrefs.DeleteKey("MorningRitualSequence");
+        PlayerPrefs.Save();
+    }
+
+    // Restore normal gameplay time before reloading.
     Time.timeScale = 1f;
 
-    // Reload the current scene.
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
+    // Reload the scene so Start() runs again.
+    UnityEngine.SceneManagement.SceneManager.LoadScene(
         UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
     );
 }
+
 }

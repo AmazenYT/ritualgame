@@ -21,7 +21,10 @@ public class TaskRandomiser : MonoBehaviour
     {
         TaskObject.TaskType.Box,
         TaskObject.TaskType.Fridge,
-        TaskObject.TaskType.Bowl
+        TaskObject.TaskType.Bowl,
+        TaskObject.TaskType.Sink,
+        TaskObject.TaskType.Bag,
+        TaskObject.TaskType.Garden
     };
 
     public bool SequenceFailed { get; private set; } = false;
@@ -182,4 +185,11 @@ public class TaskRandomiser : MonoBehaviour
         PlayerPrefs.DeleteKey(SequenceKey);
         PlayerPrefs.Save();
     }
+
+
+public List<TaskObject.TaskType> GetDailyTasks()
+{
+    return new List<TaskObject.TaskType>(dailyTasks);
+}
+
 }
